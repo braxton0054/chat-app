@@ -4,6 +4,7 @@ import path from "path";
 
 import authRouter from "./routes/auth.route.js";
 import messageRouter from "./message.route.js";
+import connectDB from "./lib/db.js";
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ const app = express();
 const __dirname = path.resolve();
 
 const PORT = process.env.PORT
+
+app.use(express.json()); // request body parser
+
 
 app.use("/api/auth", authRouter);
 
@@ -26,4 +30,7 @@ if (process.env.NODE_ENV === "production") {
     }
 }
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    connectDB();
+});
