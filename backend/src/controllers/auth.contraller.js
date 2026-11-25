@@ -40,6 +40,8 @@ export const signup = async (req, res) => {
                 fullName: newUser.fullName,
                 email: newUser.email,
                 profilePicture: newUser.profilePicture,
+
+                // welcome email to users not yet buld 
             });
         } else {
             return res.status(400).json({ message: "Invalid user data" });
