@@ -16,12 +16,12 @@ const PORT = process.env.PORT
 
 app.use(express.json()); // request body parser
 
-
 app.use("/api/auth", authRouter);
 
 app.use("/api/messages", messageRouter);
 
 //make ready for deployment
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
